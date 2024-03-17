@@ -1,5 +1,7 @@
 #include "Base64_HPP.hpp"
+
 using namespace std;
+
 int sBase64[64] = {
     'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
     'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P',

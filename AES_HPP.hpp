@@ -6,6 +6,8 @@
 #include<string>
 #include<iomanip>
 
+using namespace std;
+
 extern unsigned char S_BOX[256];
 
 extern unsigned char INV_S_BOX[256];
@@ -39,5 +41,9 @@ unsigned char G_Multi(unsigned char a, unsigned char b);
 void encrypt(unsigned char* plaintext, unsigned char* key, unsigned char* output);
 
 void decrypt(unsigned char* ciphertext, unsigned char* key, unsigned char* output);
+
+void encryptECB(int textLength, unsigned char* plaintext, unsigned char* key, unsigned char* output);
+
+void decryptECB(int textLength, unsigned char* plaintext, unsigned char* key, unsigned char* output);
 
 #endif // AES_HPP

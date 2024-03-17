@@ -1,5 +1,8 @@
 #include"AES_HPP.hpp"
 
+using namespace std;
+
+
 unsigned char S_BOX[256] =
 {
     0x63, 0x7C, 0x77, 0x7B, 0xF2, 0x6B, 0x6F, 0xC5, 0x30, 0x01, 0x67, 0x2B, 0xFE, 0xD7, 0xAB, 0x76,
@@ -301,4 +304,34 @@ void decrypt(unsigned char* ciphertext, unsigned char* key, unsigned char* outpu
             output[j * 4 + i] = state[i][j];
         }
     }
+}
+
+void encryptECB(int textLength,unsigned char* plaintext, unsigned char* key, unsigned char* output) {
+    unsigned char block[16];
+    for (int i = 0; i < textLength; i += 16) {
+        memcpy(block, plaintext + i, 16);
+
+        unsigned char tmp[16];
+        encrypt(block, key, tmp);
+
+        for (int j = i; j < i + 16; j++) {
+            output[j] = tmp[j - i];
+        }
+    }
+    return;
+}
+
+void decryptECB(int textLength, unsigned char* ciphertext, unsigned char* key, unsigned char* output) {
+    unsigned char block[16];
+    for (int i = 0; i < textLength; i += 16) {
+        memcpy(block, ciphertext + i, 16);
+
+        unsigned char tmp[16];
+        decrypt(block, key, tmp);
+
+        for (int j = i; j < i + 16; j++) {
+            output[j] = tmp[j - i];
+        }
+    }
+    return;
 }
