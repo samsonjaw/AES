@@ -45,7 +45,6 @@ int main() {//g++ AES.cpp main.cpp -o program
             getline(cin, tmp);
             for (int i = 0; i < 16; i++) { key[i] = tmp[i]; }
 
-            cout << "textLength " << textLength << '\n';
             unsigned char *ciphertext = new unsigned char [textLength];
             encryptECB(textLength,plaintext, key, ciphertext);
 
