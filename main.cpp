@@ -7,24 +7,31 @@ int main() {//g++ AES.cpp main.cpp -o program
     ios_base::fmtflags original_flags = cout.flags();
     int BlockSize = 16;
     //shiftrow & invshiftrow & sub & Invsub 完成測試
-    cout << "此程式支援Base64編碼與pkcs7填充\n";
+
+    cout << "此程式支援Base64編碼、ECB、與pkcs7填充\n";
+    cout << "密鑰僅支援128位\n";
     while (1) {
-        cout << "此AES加密與解密程式只支援128位的密鑰\n要使用加密功能請輸入0，要使用解密功能請輸入1\n";
+        cout << "===============================請選擇功能===============================\n";
+        cout << "                               0.encrypt加密\n";
+        cout << "                               1.decrypt解密\n";
+        cout << "輸入你的選擇(0/1)\n";
         int en_or_de;
         cin >> en_or_de;
         if (!en_or_de) {//en
             int textLength;
-
-            cout << "輸入的明文以字節儲存(就是常見的1byte儲存一個)的請輸入0" << '\n';
-            cout << "輸入的明文以Base64編碼的請輸入1(會先轉為字節儲存再加密)" << '\n';
+            cout << "===============================明文格式=================================\n";
+            cout << "                               0.字節儲存(就是常見的1byte儲存一個)\n";
+            cout << "                               1.Base64編碼(會先轉為字節儲存再加密)\n";
+            cout << "輸入你的選擇(0/1)\n";
             int ch_or_ba;
             cin >> ch_or_ba;
 
-            cout << "請輸入明文\n";
+            cout << "----請輸入明文----\n";
            
             string tmp;
             cin.ignore();
             getline(cin, tmp);
+            cout << '\n';
             if (ch_or_ba) {
                 tmp = Base64_decode(tmp);
             }
@@ -35,12 +42,12 @@ int main() {//g++ AES.cpp main.cpp -o program
             unsigned char *plaintext = new unsigned char[textLength];
             for (int i = 0; i < textLength; i++) { plaintext[i] = tmp[i]; }
 
-            cout << "填充後的16進位 ";
+            cout << "明文填充後的16進位: ";
             for (const auto& item : tmp) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
-            }cout << '\n'; cout.flags(original_flags);
+            }cout << "\n\n"; cout.flags(original_flags);
 
-            cout << "請輸入密鑰(字節儲存128bit)\n";
+            cout << "----請輸入密鑰(字節儲存128bit)----\n";
             unsigned char key[16];
             getline(cin, tmp);
             for (int i = 0; i < 16; i++) { key[i] = tmp[i]; }
@@ -52,19 +59,20 @@ int main() {//g++ AES.cpp main.cpp -o program
             string tt;
             tt.resize(textLength);
             for (int i = 0; i < textLength; i++) { tt[i] = ciphertext[i]; }
-            cout << "密文(16進位) ";
+            cout << "\n密文(16進位): ";
             for (const auto& item : tt) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
             }cout << '\n'; cout.flags(original_flags);
 
             tt = Base64_encode(tt);
-            cout << tt << "\n\n";
+            cout <<"密文(Base64): " << tt << "\n\n";
 
             delete[] plaintext;
             delete[] ciphertext;
         }
         else if (en_or_de) {//de
             int textLength;
+            cout << "===============================密文僅支持Base64============================\n";
             cout << "請輸入Base64編碼的密文\n";
             string tmp;
             cin.ignore();
@@ -77,7 +85,7 @@ int main() {//g++ AES.cpp main.cpp -o program
             for (int i = 0; i < textLength; i++) {
                 ciphertext[i] = tmp[i];
             }
-            cout << "請輸入密鑰(字節儲存128bit)\n";
+            cout << "\n----請輸入密鑰(字節儲存128bit)----\n";
             unsigned char key[16];
             getline(cin, tmp);
             for (int i = 0; i < 16; i++) {
@@ -97,10 +105,12 @@ int main() {//g++ AES.cpp main.cpp -o program
             pkcs7_unpadding(tt);
             textLength = tt.size();
 
+            cout << "\n解密結果(16進位): ";
             for (const auto& item : tt) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
             }cout << '\n'; cout.flags(original_flags);
 
+            cout << "解密結果(自節儲存): ";
             for (int i = 0; i < textLength; i++) {
                 cout << plaintext[i];
             }cout << "\n\n";
