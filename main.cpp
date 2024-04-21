@@ -6,27 +6,27 @@ int main() {//g++ AES.cpp main.cpp -o program
 
     ios_base::fmtflags original_flags = cout.flags();
     int BlockSize = 16;
-    //shiftrow & invshiftrow & sub & Invsub §¹¦¨´ú¸Õ
+    //shiftrow & invshiftrow & sub & Invsub å®Œæˆæ¸¬è©¦
 
-    cout << "¦¹µ{¦¡¤ä´©Base64½s½X¡BECB¡B»Ppkcs7¶ñ¥R\n";
-    cout << "±KÆ_¶È¤ä´©128¦ì\n";
+    cout << "æ­¤ç¨‹å¼æ”¯æ´Base64ç·¨ç¢¼ã€ECBã€èˆ‡pkcs7å¡«å……\n";
+    cout << "å¯†é‘°åƒ…æ”¯æ´128ä½\n";
     while (1) {
-        cout << "===============================½Ğ¿ï¾Ü¥\¯à===============================\n";
-        cout << "                               0.encrypt¥[±K\n";
-        cout << "                               1.decrypt¸Ñ±K\n";
-        cout << "¿é¤J§Aªº¿ï¾Ü(0/1)\n";
+        cout << "===============================è«‹é¸æ“‡åŠŸèƒ½===============================\n";
+        cout << "                               0.encryptåŠ å¯†\n";
+        cout << "                               1.decryptè§£å¯†\n";
+        cout << "è¼¸å…¥ä½ çš„é¸æ“‡(0/1)\n";
         int en_or_de;
         cin >> en_or_de;
         if (!en_or_de) {//en
             int textLength;
-            cout << "===============================©ú¤å®æ¦¡=================================\n";
-            cout << "                               0.¦r¸`Àx¦s(´N¬O±`¨£ªº1byteÀx¦s¤@­Ó)\n";
-            cout << "                               1.Base64½s½X(·|¥ıÂà¬°¦r¸`Àx¦s¦A¥[±K)\n";
-            cout << "¿é¤J§Aªº¿ï¾Ü(0/1)\n";
+            cout << "===============================æ˜æ–‡æ ¼å¼=================================\n";
+            cout << "                               0.å­—ç¯€å„²å­˜(å°±æ˜¯å¸¸è¦‹çš„1byteå„²å­˜ä¸€å€‹)\n";
+            cout << "                               1.Base64ç·¨ç¢¼(æœƒå…ˆè½‰ç‚ºå­—ç¯€å„²å­˜å†åŠ å¯†)\n";
+            cout << "è¼¸å…¥ä½ çš„é¸æ“‡(0/1)\n";
             int ch_or_ba;
             cin >> ch_or_ba;
 
-            cout << "----½Ğ¿é¤J©ú¤å----\n";
+            cout << "----è«‹è¼¸å…¥æ˜æ–‡----\n";
            
             string tmp;
             cin.ignore();
@@ -42,12 +42,12 @@ int main() {//g++ AES.cpp main.cpp -o program
             unsigned char *plaintext = new unsigned char[textLength];
             for (int i = 0; i < textLength; i++) { plaintext[i] = tmp[i]; }
 
-            cout << "©ú¤å¶ñ¥R«áªº16¶i¦ì: ";
+            cout << "æ˜æ–‡å¡«å……å¾Œçš„16é€²ä½: ";
             for (const auto& item : tmp) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
             }cout << "\n\n"; cout.flags(original_flags);
 
-            cout << "----½Ğ¿é¤J±KÆ_(¦r¸`Àx¦s128bit)----\n";
+            cout << "----è«‹è¼¸å…¥å¯†é‘°(å­—ç¯€å„²å­˜128bit)----\n";
             unsigned char key[16];
             getline(cin, tmp);
             for (int i = 0; i < 16; i++) { key[i] = tmp[i]; }
@@ -59,21 +59,21 @@ int main() {//g++ AES.cpp main.cpp -o program
             string tt;
             tt.resize(textLength);
             for (int i = 0; i < textLength; i++) { tt[i] = ciphertext[i]; }
-            cout << "\n±K¤å(16¶i¦ì): ";
+            cout << "\nå¯†æ–‡(16é€²ä½): ";
             for (const auto& item : tt) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
             }cout << '\n'; cout.flags(original_flags);
 
             tt = Base64_encode(tt);
-            cout <<"±K¤å(Base64): " << tt << "\n\n";
+            cout <<"å¯†æ–‡(Base64): " << tt << "\n\n";
 
             delete[] plaintext;
             delete[] ciphertext;
         }
         else if (en_or_de) {//de
             int textLength;
-            cout << "===============================±K¤å¶È¤ä«ùBase64============================\n";
-            cout << "½Ğ¿é¤JBase64½s½Xªº±K¤å\n";
+            cout << "===============================å¯†æ–‡åƒ…æ”¯æŒBase64=========================\n";
+            cout << "è«‹è¼¸å…¥Base64ç·¨ç¢¼çš„å¯†æ–‡\n";
             string tmp;
             cin.ignore();
             getline(cin, tmp);
@@ -85,7 +85,7 @@ int main() {//g++ AES.cpp main.cpp -o program
             for (int i = 0; i < textLength; i++) {
                 ciphertext[i] = tmp[i];
             }
-            cout << "\n----½Ğ¿é¤J±KÆ_(¦r¸`Àx¦s128bit)----\n";
+            cout << "\n----è«‹è¼¸å…¥å¯†é‘°(å­—ç¯€å„²å­˜128bit)----\n";
             unsigned char key[16];
             getline(cin, tmp);
             for (int i = 0; i < 16; i++) {
@@ -105,12 +105,12 @@ int main() {//g++ AES.cpp main.cpp -o program
             pkcs7_unpadding(tt);
             textLength = tt.size();
 
-            cout << "\n¸Ñ±Kµ²ªG(16¶i¦ì): ";
+            cout << "\nè§£å¯†çµæœ(16é€²ä½): ";
             for (const auto& item : tt) {
                 cout << hex << setw(2) << setfill('0') << (0xFF & static_cast<unsigned int>(item)) << ' ';
             }cout << '\n'; cout.flags(original_flags);
 
-            cout << "¸Ñ±Kµ²ªG(¦Û¸`Àx¦s): ";
+            cout << "è§£å¯†çµæœ(è‡ªç¯€å„²å­˜): ";
             for (int i = 0; i < textLength; i++) {
                 cout << plaintext[i];
             }cout << "\n\n";
