@@ -47,8 +47,17 @@ The input for encryption can be in plain byte storage or Base64 encoded form, bu
 ## Example
 ![image](https://github.com/samsonjaw/AES/assets/114964564/adc83c16-9d78-46bd-a5f4-5e7e26090985)
 
-## Contributions
-Contributions to enhance functionality or improve the codebase are welcome. Please feel free to fork the repository, make your changes, and submit a pull request for review.
+## Contributing
+Contributions are welcome!
+
+You can help by:
+
+- Reporting issues
+- Suggesting improvements
+- Adding new features through pull requests
+
+## License
+This project is licensed under the MIT License.
 
 ## other
 my note(explanation of theory / written in Chinese)：https://hackmd.io/@samson-note/InfoSec/%2F2uEV2ydvTK6WjrcYm1DZ1A
