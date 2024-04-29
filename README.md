@@ -6,7 +6,7 @@ AES is a symmetric encryption algorithm that operates on 128-bit blocks of plain
 ## Features
 - **ECB**: When encrypting data that exceeds 128 bits in length, ECB mode is one of the simplest methods to use, alongside other modes like CBC, CTR, CFB, and OFB. However, ECB is less secure because identical plaintext blocks produce identical ciphertext blocks. In ECB mode, the plaintext is divided into 128-bit segments, and each segment is encrypted independently.
 - **Base64 Encoding/Decoding**: Encodes encrypted data to Base64 format to ensure safe text output and decodes it for decryption.
-- **PKCS7 Padding**: This method involves adding padding bytes that equal the number of bytes needed to reach a block size of 16. For instance, if one byte is needed, 0x01 is added; if two bytes are needed, two 0x02s are added, and so forth up to 15 bytes, which would be 0x0f. Uniquely, if the length is already a multiple of 16, an entire block of 16 bytes (0x10) is added. This ensures that during decryption, the value of the last byte indicates the number of padding bytes to remove
+- **PKCS7 Padding**: This method involves adding padding bytes that equal the number of bytes needed to reach a block size of 16. For instance, if one byte is needed, 0x01 is added; if two bytes are needed, two 0x02 are added, and so forth up to 15 bytes, which would be 0x0f. Uniquely, if the length is already a multiple of 16, an entire block of 16 bytes (0x10) is added. This ensures that during decryption, the value of the last byte indicates the number of padding bytes to remove
 
 ## Usage
 - Compile and run main.cpp together with other required modules using g++:
