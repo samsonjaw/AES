@@ -44,31 +44,6 @@ The program will display the decrypted text in hexadecimal format first and then
 Always ensure that the key length is exactly 16 bytes.
 The input for encryption can be in plain byte storage or Base64 encoded form, but decryption only accepts Base64 encoded input.
 
-Below is a snippet from main.cpp demonstrating how the program interacts with the user to perform encryption:
-
-```cpp=
-int main() {
-    cout << "This program supports Base64 encoding, ECB, and pkcs7 padding\n";
-    cout << "Keys are only supported at 128 bits\n";
-
-    // Loop to continuously accept user commands
-    while (1) {
-        cout << "===============================Please Select a Function===============================\n";
-        cout << "                               0. Encrypt\n";
-        cout << "                               1. Decrypt\n";
-        cout << "Enter your choice (0/1)\n";
-        int en_or_de;
-        cin >> en_or_de;
-        // Process based on user input
-        if (en_or_de == 0) { // Encryption path
-            // Further interactions for setting up encryption
-        } else if (en_or_de == 1) { // Decryption path
-            // Further interactions for setting up decryption
-        }
-    }
-}
-```
-
 ## Example
 ![image](https://github.com/samsonjaw/AES/assets/114964564/adc83c16-9d78-46bd-a5f4-5e7e26090985)
 
