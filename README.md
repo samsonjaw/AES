@@ -4,7 +4,7 @@ This repository contains a C++ implementation of:
   
     AES is a symmetric encryption algorithm that operates on 128-bit blocks of plaintext and keys. It consists of five main operations: Add Round Key, SubBytes, Shift Rows, and Mix Columns, along with key expansion.
 
-The implementation contains:
+Other functions:
 - pkcs7_padding
   
     This method involves adding padding bytes that equal the number of bytes needed to reach a block size of 16. For instance, if one byte is needed, 0x01 is added; if two bytes are needed, two 0x02s are added, and so forth up to 15 bytes, which would be 0x0f. Uniquely, if the length is already a multiple of 16, an entire block of 16 bytes (0x10) is added. This ensures that during decryption, the value of the last byte indicates the number of padding bytes to remove
