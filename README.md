@@ -1,6 +1,6 @@
 # AES
 This repository contains a C++ implementation of:
-- AES-128\n
+- AES-128
   AES is a symmetric encryption algorithm that operates on 128-bit blocks of plaintext and keys. It consists of five main operations: Add Round Key, SubBytes, Shift Rows, and Mix Columns, along with key expansion.
 
 The implementation contains:
