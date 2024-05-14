@@ -1,7 +1,9 @@
 # AES
-This repository is an AES-128 C++ application. It integrates several components like Base64 encoding/decoding, ECB mode encryption, and pkcs7 padding to provide a complete encryption and decryption solution.
+This repository is an AES-128 C++ application.   
+It integrates several components like Base64 encoding/decoding, ECB mode encryption, and pkcs7 padding to provide a complete encryption and decryption solution.  
 
-AES is a symmetric encryption algorithm that operates on 128-bit blocks of plaintext and keys. It consists of five main operations: Add Round Key, SubBytes, Shift Rows, and Mix Columns, along with key expansion.
+AES is a symmetric encryption algorithm that operates on 128-bit blocks of plaintext and keys(keys can be 128-bit, 192-bit, 256-bit. This implementation only supports 128-bit).  
+It consists of five main operations: Add Round Key, SubBytes, Shift Rows, and Mix Columns, along with key expansion.  
 
 ## Features
 - **ECB**: When encrypting data that exceeds 128 bits in length, ECB mode is one of the simplest methods to use, alongside other modes like CBC, CTR, CFB, and OFB. However, ECB is less secure because identical plaintext blocks produce identical ciphertext blocks. In ECB mode, the plaintext is divided into 128-bit segments, and each segment is encrypted independently.
